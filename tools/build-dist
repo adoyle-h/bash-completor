@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o errtrace
+(shopt -p inherit_errexit &>/dev/null) && shopt -s inherit_errexit
+
+SCRIPT_DIR="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+readonly SCRIPT_DIR
+
+build() {
+  cat <<EOF
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o errtrace
+(shopt -p inherit_errexit &>/dev/null) && shopt -s inherit_errexit
+
+EOF
+
+  sed "s/VERSION=.*/VERSION=$VERSION/" < "$SCRIPT_DIR/../src/const.bash"
+
+  {
+    echo ""
+    . "$SCRIPT_DIR/../src/color.bash"
+    declare -p RED GREEN YELLOW CYAN RESET_ALL
+  }
+
+  local files=(
+    util
+    reply
+    make/varname
+    make/header
+    make/opt
+    make/reply
+    make/cmd-core
+    make/subcmd
+    make/cmd
+    make
+    usage
+    config
+    main
+  )
+  local file
+  for file in "${files[@]}"; do
+    echo ""
+    cat "$SCRIPT_DIR/../src/${file}.bash"
+  done
+
+  cat <<EOF
+
+main "\$@"
+EOF
+}
+
+main() {
+  local VERSION=${1:-v0.0.0}
+  local dist="$SCRIPT_DIR/../dist"
+  mkdir -p "$dist"
+  build > "$dist/bash-completor"
+  chmod +x "$dist/bash-completor"
+
+  echo "Generated bash-completor at $dist/bash-completor"
+}
+
+main "$@"

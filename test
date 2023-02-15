@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# This script should support Bash: 4.0+
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o errtrace
+(shopt -p inherit_errexit &>/dev/null) && shopt -s inherit_errexit
+
+export IS_TEST=1
+ROOT_DIR="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+export ROOT_DIR
+export TEST_DIR=$ROOT_DIR/tests
+
+setup_fixture() {
+  # shellcheck source=./tests/fixture/setup.bash
+  source "$TEST_DIR"/fixture/setup.bash
+}
+export -f setup_fixture
+
+declare -a bats_args=(
+  --print-output-on-failure
+)
+
+if [[ -n ${CI:-} ]]; then
+  bats_args+=(--tap)
+fi
+
+if [[ ${1:-} == '-j' ]] && [[ -n ${2:-} ]]; then
+  bats_args+=(-j "$2")
+  shift 2
+fi
+
+if [[ -z "${1:-}" ]]; then
+  test_dirs=( "$TEST_DIR" "$ROOT_DIR/src" )
+else
+  test_dirs=( "$1" )
+fi
+
+export PATH="$TEST_DIR/fixture/bats/bin:${PATH}"
+bats --version
+
+exec bats "${bats_args[@]}" "${test_dirs[@]}"
