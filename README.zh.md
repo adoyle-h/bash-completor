@@ -87,7 +87,7 @@ sudo ln -s "$PWD/dist/bash-completor" /usr/local/bin/bash-completor
 ### 例子
 
 - [./completor.bash](./completor.bash) 一个很简单的例子。运行 `make build` 构建 bash-completor 自身的补全脚本。
-- [zig.completor.bash](https://github.com/adoyle-h/shell-completions/blob/feat/bash/zig.completor.bash)
+- [zig.completor.bash](https://github.com/ziglang/shell-completions/blob/master/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
 - 其他例子见 [./example/](./example/)
 

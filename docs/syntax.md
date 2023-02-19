@@ -3,8 +3,9 @@
 ## Examples
 
 - [../completor.bash](../completor.bash)
-- [zig.completor.bash](https://github.com/adoyle-h/shell-completions/blob/feat/bash/zig.completor.bash)
+- [zig.completor.bash](https://github.com/ziglang/shell-completions/blob/master/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
+- Other examples in [../example/](../example/)
 
 ## Meta fields
 

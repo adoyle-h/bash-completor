@@ -7,7 +7,7 @@ Creating a bash completion script in a declarative way.
 ## Feature
 
 - Declarative programming. You only need to know the most basic bash syntax.
-- Only `bash` and `sed` are needed on at compile time. Only `bash` is needed on at run time. No other dependencies.
+- Only `bash` and `sed` are needed on at compile time. Only `bash` is needed on at runtime. No other dependencies.
 - Support for command format looks like `<cmd> [options] [arguments]`.
 - Support for sub-commands, which looks like `<cmd> [cmd-options] <subcmd> [subcmd-options] [arguments]`.
 - Support for `-o`, `--option`, `--option <value>`, `--option=`, `+o`, `+option` format.
@@ -86,7 +86,7 @@ Enter `bash-completor` for help.
 ### Examples
 
 - [./completor.bash](./completor.bash) It's a simple example. Run `make build` to build the completion script of bash-completor.
-- [zig.completor.bash](https://github.com/adoyle-h/shell-completions/blob/feat/bash/zig.completor.bash)
+- [zig.completor.bash](https://github.com/ziglang/shell-completions/blob/master/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
 - Other examples in [./example/](./example/)
 
