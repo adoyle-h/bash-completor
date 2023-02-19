@@ -1,6 +1,6 @@
 # BashCompletor
 
-声明式 Bash 补全脚本生成器。
+声明式编写 Bash 补全脚本。
 
 [English](./README.md) | [中文](./README.zh.md)
 
@@ -26,8 +26,8 @@
 
 ## Versioning
 
-Read [tags][] for verions.
-The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).
+版本详见 [tags][]。
+版本命名遵守 [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html)。
 
 ## 安装
 
@@ -89,12 +89,13 @@ sudo ln -s "$PWD/dist/bash-completor" /usr/local/bin/bash-completor
 - [./completor.bash](./completor.bash) 一个很简单的例子。运行 `make build` 构建 bash-completor 自身的补全脚本。
 - [zig.completor.bash](https://github.com/adoyle-h/shell-completions/blob/feat/bash/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
+- 其他例子见 [./example/](./example/)
 
 ### [语法](./docs/syntax.md)
 
 ## 补全脚本
 
-生成的补全脚本遵循以下代码风格。便于在运行时调试。
+生成的补全脚本遵循以下代码风格。无需担心重名问题。而且这也便于在运行时调试。
 
 - 主命令的补全函数必须是 `_${cmd}_completions`。
 - 所有子命令的补全函数必须以 `_${cmd}_completions_${subcmd}` 为前缀命名。

@@ -1,6 +1,6 @@
 # BashCompletor
 
-A declarative generator for creating bash completion script.
+Creating a bash completion script in a declarative way.
 
 [English](./README.md) | [中文](./README.zh.md)
 
@@ -25,7 +25,7 @@ A declarative generator for creating bash completion script.
 
 ## Versioning
 
-Read [tags][] for verions.
+Read [tags][] for versions.
 The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).
 
 ## Installation
@@ -88,12 +88,14 @@ Enter `bash-completor` for help.
 - [./completor.bash](./completor.bash) It's a simple example. Run `make build` to build the completion script of bash-completor.
 - [zig.completor.bash](https://github.com/adoyle-h/shell-completions/blob/feat/bash/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
+- Other examples in [./example/](./example/)
 
 ### [Syntax](./docs/syntax.md)
 
 ## The completion script
 
-The generated completion script follows below code style. It's easy to debug at runtime.
+The generated completion script follows below code style. No worry about naming conflict.
+And it's easy to debug at runtime.
 
 - The main command completion function must be `_${cmd}_completions`
 - All subcmd completion functions must be named with prefix `_${cmd}_completions_${subcmd}`.
