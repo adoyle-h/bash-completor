@@ -91,7 +91,7 @@ sudo ln -s "$PWD/dist/bash-completor" /usr/local/bin/bash-completor
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
 - 其他例子见 [./example/](./example/)
 
-### [语法](./docs/syntax.md)
+### [语法](./docs/syntax.zh.md)
 
 ## 补全脚本
 
