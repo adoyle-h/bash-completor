@@ -59,19 +59,32 @@ curl -LO "https://github.com/adoyle-h/bash-completor/releases/download/$VERSION/
 # Check files integrity
 md5sum -c ./*.md5
 
+# Load the completion script of bash-completor in current shell
+. $PWD/bash-completor.completion.bash
+
+# Autoload it on startup
 echo ". $PWD/bash-completor.completion.bash" >> ~/.bashrc
 ```
 
 ### Git
 
 ```sh
-# Clone this repo
-git clone --depth 1 https://github.com/adoyle-h/bash-completor.git
+VERSION=v0.1.0
 
+# Clone this repo
+git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/bash-completor.git
+
+# To build bash-completor
 make build
 
 # Create symbol link or copy it to somewhere in your local $PATH
 sudo ln -s "$PWD/dist/bash-completor" /usr/local/bin/bash-completor
+
+# Load the completion script of bash-completor in current shell
+. $PWD/dist/bash-completor.completion.bash
+
+# Autoload the completion script of bash-completor if you need.
+echo ". $PWD/dist/bash-completor.completion.bash" >> ~/.bashrc
 ```
 
 ## Usage

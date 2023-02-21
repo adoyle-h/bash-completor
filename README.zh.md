@@ -24,7 +24,7 @@
 - 运行补全脚本
   - Bash v4.0+
 
-## Versioning
+## 版本
 
 版本详见 [tags][]。
 版本命名遵守 [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html)。
@@ -54,25 +54,38 @@ sudo ln -s "$PWD/bash-completor" /usr/local/bin/bash-completor
 这有个 bash-completor 自身的补全脚本。如果你需要可以安装它。
 
 ```sh
-# To download the completion script of bash-completor
+# 下载 bash-completor 的补全脚本
 curl -LO "https://github.com/adoyle-h/bash-completor/releases/download/$VERSION/bash-completor.completion.bash{,.md5}"
 
-# Check files integrity
+# 检查文件完整性
 md5sum -c ./*.md5
 
+# 在当前 shell 加载 bash-completor 的补全脚本
+. $PWD/bash-completor.completion.bash
+
+# 每次启动自动加载
 echo ". $PWD/bash-completor.completion.bash" >> ~/.bashrc
 ```
 
 ### Git
 
 ```sh
-# Clone this repo
-git clone --depth 1 https://github.com/adoyle-h/bash-completor.git
+VERSION=v0.1.0
 
+# 克隆项目
+git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/bash-completor.git
+
+# 构建 bash-completor
 make build
 
-# Create symbol link or copy it to somewhere in your local $PATH
+# 创建软链接，或者把它拷贝到你本机的 $PATH 目录下
 sudo ln -s "$PWD/dist/bash-completor" /usr/local/bin/bash-completor
+
+# 在当前 shell 加载 bash-completor 的补全脚本
+. $PWD/dist/bash-completor.completion.bash
+
+# 自动加载 bash-completor 的补全脚本，如果你需要的话
+echo ". $PWD/dist/bash-completor.completion.bash" >> ~/.bashrc
 ```
 
 ## 用法

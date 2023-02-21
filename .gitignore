@@ -4,6 +4,8 @@
 /tests/fixture/bats
 /tests/fixture/bats-file
 /tests/fixture/support
+/makefile-utils/*
+!/makefile-utils/*.mk
 !**/.gitkeep
 
 # Created by https://www.gitignore.io/api/vim,osx
