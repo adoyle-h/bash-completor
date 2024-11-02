@@ -96,14 +96,14 @@ Enter `bash-completor` for help.
 
 ## Configuration
 
+### [Syntax](./docs/syntax.md)
+
 ### Examples
 
 - [./completor.bash](./completor.bash) It's a simple example. Run `make build` to build the completion script of bash-completor.
 - [zig.completor.bash](https://github.com/ziglang/shell-completions/blob/master/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
 - Other examples in [./example/](./example/)
-
-### [Syntax](./docs/syntax.md)
 
 ## The completion script
 
@@ -128,7 +128,7 @@ Run `make test` in shell.
 
 ## Copyright and License
 
-Copyright 2023 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
+Copyright 2023-2024 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
 The project is licensed under the **Apache License Version 2.0**.
 
 See the [LICENSE][] file for the specific language governing permissions and limitations under the License.

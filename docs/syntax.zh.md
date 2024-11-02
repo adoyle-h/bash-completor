@@ -171,8 +171,8 @@ reply_custom_words() {
 
 - [Bahs 定义的补全变量](https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html)
 - bash-completor 定义的补全变量
-  - `cur` = `${COMP_WORDS[COMP_CWORD]}` 当前光标所在的单词
-  - `prev` = `${COMP_WORDS[COMP_CWORD-1]}` 当前光标位置之前的单词
+  - `$cur` = `${COMP_WORDS[COMP_CWORD]}` 当前光标所在的单词
+  - `$prev` = `${COMP_WORDS[COMP_CWORD-1]}` 当前光标位置之前的单词
 
 ## --option=
 

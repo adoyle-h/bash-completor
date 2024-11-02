@@ -97,14 +97,14 @@ echo ". $PWD/dist/bash-completor.completion.bash" >> ~/.bashrc
 
 ## 配置
 
+### [语法](./docs/syntax.zh.md)
+
 ### 例子
 
 - [./completor.bash](./completor.bash) 一个很简单的例子。运行 `make build` 构建 bash-completor 自身的补全脚本。
 - [zig.completor.bash](https://github.com/ziglang/shell-completions/blob/master/zig.completor.bash)
 - [nvim-shell-completions/nvim.completor.bash](https://github.com/adoyle-h/nvim-shell-completions/blob/master/nvim.completor.bash)
 - 其他例子见 [./example/](./example/)
-
-### [语法](./docs/syntax.zh.md)
 
 ## 补全脚本
 
@@ -131,7 +131,7 @@ echo ". $PWD/dist/bash-completor.completion.bash" >> ~/.bashrc
 
 ## 版权声明
 
-Copyright 2023 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
+Copyright 2023-2024 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
 The project is licensed under the **Apache License Version 2.0**.
 
 See the [LICENSE][] file for the specific language governing permissions and limitations under the License.

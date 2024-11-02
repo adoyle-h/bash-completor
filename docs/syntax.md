@@ -166,12 +166,12 @@ reply_custom_words() {
 
 And the reply action `@custom_words` is available now. `cmd_opts=( --custom:@custom_words )`.
 
-#### Builtin gloabl variables
+#### Builtin global variables
 
 - [The completion variables defined by Bash](https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html).
 - The completion variables defined by bash-completor
-  - `cur` = `${COMP_WORDS[COMP_CWORD]}` current word on cursor
-  - `prev` = `${COMP_WORDS[COMP_CWORD-1]}` the word before current cursor
+  - `$cur` = `${COMP_WORDS[COMP_CWORD]}` current word on cursor
+  - `$prev` = `${COMP_WORDS[COMP_CWORD-1]}` the word before current cursor
 
 ## --option=
 
