@@ -35,7 +35,7 @@ You can install it by `curl` or `git`.
 ### Curl
 
 ```sh
-VERSION=v0.1.0
+VERSION=v0.2.0
 
 # To download bash-completor
 curl -LO "https://github.com/adoyle-h/bash-completor/releases/download/$VERSION/bash-completor{,.md5}"
@@ -69,7 +69,7 @@ echo ". $PWD/bash-completor.completion.bash" >> ~/.bashrc
 ### Git
 
 ```sh
-VERSION=v0.1.0
+VERSION=v0.2.0
 
 # Clone this repo
 git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/bash-completor.git
