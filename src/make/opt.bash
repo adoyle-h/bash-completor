@@ -25,7 +25,7 @@ parse_action() {
 
         if [[ ${map_reply_funcs["reply_${func_name}"]:-} == true ]]; then
           local func_arg=${var/@${func_name}:/}
-          if (( ${#func_arg} > 0 )) && [[ ${func_arg[*]:0:1} != '@' ]]; then
+          if ((${#func_arg} > 0)) && [[ ${func_arg[*]:0:1} != '@' ]]; then
             printf -- "_%s_comp_reply_%s '%s'" "$cmd" "$func_name" "$func_arg"
           else
             printf -- '_%s_comp_reply_%s' "$cmd" "$func_name"
@@ -37,7 +37,7 @@ parse_action() {
             @f*) suggest "Try '@files' instead of '$var'." ;;
             @d*) suggest "Try '@dirs' instead of '$var'." ;;
             @h*) suggest "Try '@hold' instead of '$var'." ;;
-            *) suggest "Try '@files', '@dirs', '@hold' or other reply functions. See https://github.com/adoyle-h/bash-completor/docs/syntax.md#reply-functions "
+            *) suggest "Try '@files', '@dirs', '@hold' or other reply functions. See https://github.com/adoyle-h/bash-completor/docs/syntax.md#reply-functions " ;;
           esac
 
           exit 5
