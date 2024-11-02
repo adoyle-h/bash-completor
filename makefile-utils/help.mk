@@ -13,7 +13,12 @@ help:
 	@printf 'Usage: make %b<target>%b\n\n' '${GREEN}' '${RESET}'
 
 	@echo 'Target:'
-	@awk '/^[-_a-zA-Z0-9]+:/ { \
+	@# https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
+	@awk '/[-_/.a-zA-Z0-9]+:.+=/ { next } \
+		/^.(PHONY|SUFFIXES|DEFAULT|PRECIOUS|INTERMEDIATE|NOTINTERMEDIATE|SECONDARY|SECONDEXPANSION|DELETE_ON_ERROR|IGNORE|LOW_RESOLUTION_TIME|SILENT|EXPORT_ALL_VARIABLES|NOTPARALLEL|ONESHELL|POSIX|NOEXPORT|MAKE):/ { next } \
+		/^[-_/.a-zA-Z0-9]+:/ { \
+		is_hide = match(lastLine, /^# .*@hide/); \
+		if (is_hide) next; \
 		target = substr($$1, 0, index($$1, ":")-1); \
 		desc = match(lastLine, /^# @desc +(.*)/); \
 		if (desc) { \
@@ -25,6 +30,6 @@ help:
 	} { lastLine = $$0 }' $(MAKEFILE_LIST)
 
 	@# Show @target
-	@grep -h -E '^# @target [-/_a-zA-Z0-9]+' $(MAKEFILE_LIST) \
-		| sed -E 's|^# @target ([-/_a-zA-Z0-9]+) *(.*)?|\1␤\2|' | \
+	@grep -h -E '^# @target [-_/.a-zA-Z0-9]+' $(MAKEFILE_LIST) |\
+		sed -E 's|^# @target ([-_/.a-zA-Z0-9]+) *(.*)?|\1␤\2|' |\
 		awk -F '␤' '{ printf "  $(GREEN)%-$(TARGET_MAX_CHAR_NUM)s $(YELLOW)%s$(RESET)\n",$$1,$$2 }'

@@ -9,6 +9,7 @@ test: config-test
 .PHONY: examples
 # @desc print examples
 examples: dist/bash-completor
+	@rm -rf ./example/*-completion.bash
 	@find ./example -name '*.completor.bash' -exec $^ -c {} \;
 
 .PHONY: build
@@ -57,7 +58,30 @@ tests/fixture/support:
 BUMP_TARGETS := $(addprefix bump-,major minor patch)
 .PHONY: $(BUMP_TARGETS)
 $(BUMP_TARGETS):
-	@$(MAKE) $(subst bump-,semver-,$@) > VERSION
+	@$(MAKE) -s $(subst bump-,semver-,$@) > VERSION
 	@sed -i.bak -E "s/^VERSION=.+/VERSION=v$$(cat VERSION)/" README.md
 	@sed -i.bak -E "s/^VERSION=.+/VERSION=v$$(cat VERSION)/" README.zh.md
-	@rm README.md.bak README.zh.md.bak VERSION
+	@rm README.md.bak README.zh.md.bak
+
+NEXT_VERSION ?= $(shell cat VERSION)
+.PHONY: changelog
+# @desc Generate and update the CHANGELOG file
+changelog:
+	$(MAKE) -s CHANGELOG NEXT_VERSION=$(NEXT_VERSION)
+
+.PHONY: new-tag
+new-tag:
+	@git tag v$(shell cat VERSION)
+
+# @target release-major  release major version (x)
+# @target release-minor  release minor version (y)
+# @target release-patch  release patch version (z)
+RELEASE_TARGETS := $(addprefix release-,major minor patch)
+.PHONY: $(RELEASE_TARGETS)
+$(RELEASE_TARGETS):
+	@$(MAKE) -s $(subst release-,bump-,$@)
+	@$(MAKE) -s changelog
+	@git add .
+	@git commit -m "bump: $(subst release-,,$@) version"
+	@git rebase develop master
+	@$(MAKE) -s new-tag
