@@ -48,7 +48,7 @@ parse_action() {
     if [[ -n "$var" ]]; then
       printf -- "_%s_comp_reply_words '%s'" "$cmd" "$var"
     else
-      printf ''
+      printf ':'
     fi
   fi
 }

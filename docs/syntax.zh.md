@@ -41,6 +41,7 @@
   - 如何补全子命令的 arguments。默认是 `subcmd_args__fallback` 的值。
   - 当光标处于空格后，会触发这个补全。
   - `${subcmd}` 必须是 `subcmds` 的成员。
+  - `subcmd_args_${subcmd}=''` 意味着子命令没有 arguments。
 - (可选) `subcmd_opts_${subcmd}=()`
   - 如何补全子命令的 options。默认是 `subcmd_opts__fallback` 的值。
   - 当光标处于 `-` 或 `+`，会触发这个补全。

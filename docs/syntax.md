@@ -41,6 +41,7 @@ Source codes: [src/make/header.bash](../src/make/header.bash)
   - The action how to completion the arguments of sub-command. Defaults to the value of `subcmd_args__fallback`.
   - To complete the arguments of sub-command when cursor is after space.
   - The `${subcmd}` must be the item of `subcmds`.
+  - `subcmd_args_${subcmd}=''` means no argument for the sub-command.
 - (Optional) `subcmd_opts_${subcmd}=()`
   - The options of sub-command. Defaults to the value of `subcmd_opts__fallback.`
   - To complete the options of sub-command when cursor is after `-` or `+`.
